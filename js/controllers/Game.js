@@ -28,7 +28,8 @@ class Game {
     }
 
     nextTurn() {
-
+        console.log(this._turnToPlay);
+        
         let oldPossibilities = document.querySelectorAll('.moveTo');
         oldPossibilities.forEach(possibility => {
             possibility.classList.remove('moveTo');
@@ -44,16 +45,19 @@ class Game {
                 this._turnToPlay.positionX = move.x;
                 this._turnToPlay.positionY = move.y;
                 this.positionate(this._turnToPlay);
+       
+                if(this._turnToPlay.player === 1){
+                    this._turnToPlay = this._piece2;
+                }else {
+                    this._turnToPlay = this._piece1;
+                }
+       
                 this.nextTurn();
             
             }
-
-            if(this._turnToPlay.player === 1){
-                this._turnToPlay = this._piece2;
-            }else {
-                this._turnToPlay = this._piece1;
-            }
         });
+
+       
     }
 
     positionate(piece) {
