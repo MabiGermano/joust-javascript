@@ -59,7 +59,10 @@ table tr {
 
 
 table td {
+    padding: 0;
     width: 1rem;
+    max-width: 1rem;
+    text-align: center;
 }
 
 table tr:nth-child(odd) td:nth-child(odd) {
@@ -76,4 +79,9 @@ table tr:nth-child(even) td:nth-child(even) {
 
 table tr:nth-child(even) td:nth-child(odd) {
     background-color: var(--color-even);
+}
+
+table tr td span {
+    font-size: 4.5rem;
+    
 }
