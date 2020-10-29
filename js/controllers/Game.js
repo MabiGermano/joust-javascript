@@ -11,6 +11,9 @@ class Game {
 
         this._gameBoard = new GameBoard(new Piece(1), new Piece(2));
         this._positionsHelper = new PositionsHelper();
+
+        this._message = new Message();
+        this._messageComponent = new MessageView(docSelect('#messages'));
     }
 
     start() {
@@ -28,9 +31,10 @@ class Game {
     }
 
     nextTurn() {
-        const {
-            turnToPlay
-        } = this._gameBoard;
+        const { turnToPlay } = this._gameBoard;
+       
+        this._message.message = `É a vez do Jogador ${turnToPlay.player}`;
+        this._messageComponent.update(this._message);
 
         let oldPossibilities = document.querySelectorAll('.moveTo');
         oldPossibilities.forEach(possibility => {
