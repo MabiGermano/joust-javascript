@@ -4,7 +4,7 @@ class GameBoard {
         this._rows = docSelectAll('tr');
         this._piece1 = piece1;
         this._piece2 = piece2;
-        this._turnToPlay = this._piece1;
+        this._turnToPlay;
 
         this._positionsHelper = new PositionsHelper();
     }
@@ -37,6 +37,8 @@ class GameBoard {
         if (this._positionsHelper.isSamePosition(this._piece1, this._piece2)) {
             this.initPlayers();
         }
+
+        this._turnToPlay = this._piece1;
     }
 
     nextPlayerTurn() {

@@ -7,8 +7,6 @@ class Game {
         this._gameBoardView.update(null);
 
         this._rows = docSelectAll('tr');
-        this._piece1 = new Piece(1);
-        this._piece2 = new Piece(2);
         this._turnToPlay;
 
         this._gameBoard = new GameBoard(new Piece(1), new Piece(2));
@@ -17,6 +15,11 @@ class Game {
 
     start() {
 
+        let disabled = document.querySelectorAll('td.disabled');
+        disabled.forEach(item => {
+            item.classList.remove('disabled');
+        })
+        
         this._gameBoard.initPlayers();
         this.positionate(this._gameBoard.player1);
         this.positionate(this._gameBoard.player2);
@@ -33,7 +36,7 @@ class Game {
         oldPossibilities.forEach(possibility => {
             possibility.classList.remove('moveTo');
             possibility.onclick = "";
-        })
+        });
 
         const moves = turnToPlay.possibleMoves();
         let abletoMove = false;
