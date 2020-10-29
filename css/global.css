@@ -1,0 +1,47 @@
+:root {
+    --color-ood:  dodgerblue;
+    --color-even: #9ac0e6;
+}
+
+html,
+body,
+#root {
+    width: 100vw;
+    height: 100vh;
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 50%;
+    border-collapse: collapse;
+}
+
+table tr {
+    height: 5rem;
+}
+
+
+table td {
+    width: 1rem;
+}
+
+table tr:nth-child(odd) td:nth-child(odd) {
+    background-color: var(--color-ood);
+}
+
+table tr:nth-child(odd) td:nth-child(even) {
+    background-color: var(--color-even);
+}
+
+table tr:nth-child(even) td:nth-child(even) {
+    background-color: var(--color-ood);
+}
+
+table tr:nth-child(even) td:nth-child(odd) {
+    background-color: var(--color-even);
+}
