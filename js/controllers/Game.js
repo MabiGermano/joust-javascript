@@ -27,5 +27,16 @@ class Game {
         }else {
             this.start();
         }
+        this.nextTurn();
+    }
+
+    nextTurn() {
+        const moves = this._piece1.possibleMoves();
+        console.log(`ATUAL => X: ${this._piece1.positionX}, Y: ${this._piece1.positionY} `);
+        
+        moves.forEach(move => {
+            console.log(move);
+            console.log(this._rows[move.y].cells[move.x].classList.add('moveTo'));
+        });
     }
 }

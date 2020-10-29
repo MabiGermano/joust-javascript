@@ -85,3 +85,7 @@ table tr td span {
     font-size: 4rem;
     
 }
+
+table td.moveTo {
+    background-color: darksalmon !important;
+}
