@@ -9,7 +9,7 @@
 </head>
 <body>
     <aside>
-        <button id="start">
+        <button id="start" onclick="game.start()">
             Start Game
         </button>
     </aside>
@@ -20,9 +20,11 @@
     <script src="js/views/View.js"></script>
     <script src="js/views/GameBoardView.js"></script>
 
-    <script src="js/controllers/App.js"></script>
+    <script src="js/models/Piece.js"></script>
+
+    <script src="js/controllers/Game.js"></script>
     <script>
-        const app = new App();
+        const game = new Game();
     </script>
 </body>
 </html>
