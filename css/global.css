@@ -2,10 +2,10 @@
     --color-ood:  #468faf;
     --color-even: #a9d6e5;
     --color-player1: #070068;
-    --color-player2: #edae49;
+    --color-player2: #e69c24;
     --color-moveTo: #9b2f3d;
     --color-ood-disabled: #7c7c7c; 
-    --color-even-disabled: #d4d4d4; 
+    --color-even-disabled: #becbce; 
 }
 
 html,
@@ -68,6 +68,7 @@ aside button:focus {
 
 aside p {
     font-size: 1.3rem;
+    text-align: center;
 }
 
 table {
