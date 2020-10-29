@@ -1,13 +1,9 @@
 class Game {
     constructor() {
         const docSelect = document.querySelector.bind(document);
-        const docSelectAll = document.querySelectorAll.bind(document);
 
         this._gameBoardView = new GameBoardView(docSelect('#root'));
         this._gameBoardView.update(null);
-
-        this._rows = docSelectAll('tr');
-        this._turnToPlay;
 
         this._gameBoard = new GameBoard(new Piece(1), new Piece(2));
         this._positionsHelper = new PositionsHelper();
@@ -15,7 +11,7 @@ class Game {
         this._message = new Message();
         this._messageComponent = new MessageView(docSelect('#messages'));
     }
-
+    
     start() {
 
         let disabled = document.querySelectorAll('td.disabled');
@@ -53,21 +49,20 @@ class Game {
                 this._updateGameMessage(`Fim do jogo!! EMPATE.`);
             }
         }
-
     }
 
     possibleMoves(moves, turnToPlay) {
 
         let hasMoves = false;
         moves.forEach(move => {
-            //TODO: Improve it
+            
             const samePosition = this._positionsHelper.isSamePosition({
                 positionX: move.x,
                 positionY: move.y
             }, this._gameBoard.nextPlayer());
 
             if (!samePosition) {
-                const cell = this._rows[move.y].cells[move.x];
+                const cell = this._gameBoard.rows[move.y].cells[move.x];
                 if (!cell.classList.contains('disabled')) {
                    
                     hasMoves = true;
@@ -94,11 +89,11 @@ class Game {
 
     positionate(piece, old = {}) {
         if (Object.keys(old).length > 0) {
-            this._rows[old.positionY]
+            this._gameBoard.rows[old.positionY]
                 .cells[old.positionX].classList.add('disabled');
         }
 
-        this._rows[piece.positionY]
+        this._gameBoard.rows[piece.positionY]
             .cells[piece.positionX]
             .appendChild(piece.element);
     }

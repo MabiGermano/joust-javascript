@@ -22,6 +22,10 @@ class GameBoard {
         return this._turnToPlay;
     }
 
+    get rows () {
+        return this._rows;
+    }
+
     nextPlayer() {
         if (this._turnToPlay.player === 1) {
             return this._piece2;
