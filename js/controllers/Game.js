@@ -2,65 +2,84 @@ class Game {
     constructor() {
         const docSelect = document.querySelector.bind(document);
         const docSelectAll = document.querySelectorAll.bind(document);
-        this._gameBoard = new GameBoardView(docSelect('#root'));
-        this._gameBoard.update(null);
+
+        this._gameBoardView = new GameBoardView(docSelect('#root'));
+        this._gameBoardView.update(null);
 
         this._rows = docSelectAll('tr');
         this._piece1 = new Piece(1);
         this._piece2 = new Piece(2);
-
         this._turnToPlay;
+
+        this._gameBoard = new GameBoard(new Piece(1), new Piece(2));
+        this._positionsHelper = new PositionsHelper();
     }
 
     start() {
-        this._piece1.build();
-        this._piece2.build();
 
-        if (!(this._piece1.positionY == this._piece2.positionY &&
-                this._piece1.positionX == this._piece2.positionX)) {
-            this.positionate(this._piece1);
-            this.positionate(this._piece2);
-        } else {
-            this.start();
-        }
-        this._turnToPlay = this._piece1;
+        this._gameBoard.initPlayers();
+        this.positionate(this._gameBoard.player1);
+        this.positionate(this._gameBoard.player2);
+
         this.nextTurn();
     }
 
     nextTurn() {
-        console.log(this._turnToPlay);
-        
+        const {
+            turnToPlay
+        } = this._gameBoard;
+
         let oldPossibilities = document.querySelectorAll('.moveTo');
         oldPossibilities.forEach(possibility => {
             possibility.classList.remove('moveTo');
             possibility.onclick = "";
         })
 
-        const moves = this._turnToPlay.possibleMoves();
+        const moves = turnToPlay.possibleMoves();
+        let abletoMove = false;
         moves.forEach(move => {
             let cell = this._rows[move.y].cells[move.x];
-            cell.classList.add('moveTo');
-            cell.onclick = () => {
-                
-                this._turnToPlay.positionX = move.x;
-                this._turnToPlay.positionY = move.y;
-                this.positionate(this._turnToPlay);
-       
-                if(this._turnToPlay.player === 1){
-                    this._turnToPlay = this._piece2;
-                }else {
-                    this._turnToPlay = this._piece1;
+            //TODO: Improve it
+            const isSamePosition = this._positionsHelper.isSamePosition(
+                    {positionX: move.x, positionY: move.y}, this._gameBoard.nextPlayer);
+
+            if (!cell.classList.contains('disabled') && !isSamePosition) {
+                abletoMove = true;  
+                cell.classList.add('moveTo');
+                cell.onclick = () => {
+                    const old = {};
+                    old.positionX = turnToPlay.positionX;
+                    old.positionY = turnToPlay.positionY;
+
+
+                    turnToPlay.positionX = move.x;
+                    turnToPlay.positionY = move.y;
+                    this.positionate(turnToPlay, old);
+
+                    this._gameBoard.nextPlayerTurn();
+
+                    this.nextTurn();
                 }
-       
-                this.nextTurn();
-            
             }
+
+            
+
         });
 
-       
+        if(!abletoMove){
+            alert("não pode mais mover");
+        }
+
     }
 
-    positionate(piece) {
+    positionate(piece, old = {}) {
+        if (Object.keys(old).length > 0) {
+            console.log(old);
+
+            this._rows[old.positionY]
+                .cells[old.positionX].classList.add('disabled');
+        }
+
         this._rows[piece.positionY]
             .cells[piece.positionX]
             .appendChild(piece.element);

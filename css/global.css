@@ -1,9 +1,11 @@
 :root {
-    --color-ood:  dodgerblue;
-    --color-even: #9ac0e6;
+    --color-ood:  #468faf;
+    --color-even: #a9d6e5;
     --color-player1: #070068;
-    --color-player2: #d6770a;
-    --color-moveTo: #6b0032;
+    --color-player2: #edae49;
+    --color-moveTo: #9b2f3d;
+    --color-ood-disabled: #7c7c7c; 
+    --color-even-disabled: #d4d4d4; 
 }
 
 html,
@@ -84,6 +86,24 @@ table tr:nth-child(even) td:nth-child(odd) {
     background-color: var(--color-even);
 }
 
+table tr:nth-child(odd) td.disabled:nth-child(odd) {
+    background-color: var(--color-ood-disabled);
+}
+
+table tr:nth-child(odd) td.disabled:nth-child(even) {
+    background-color: var(--color-even-disabled);
+}
+
+table tr:nth-child(even) td.disabled:nth-child(even) {
+    background-color: var(--color-ood-disabled);
+}
+
+table tr:nth-child(even) td.disabled:nth-child(odd) {
+    background-color: var(--color-even-disabled);
+}
+
+
+
 table tr td span {
     font-size: 4rem;
     
@@ -92,6 +112,7 @@ table tr td span {
 table td.moveTo {
     background-color: var(--color-moveTo) !important;
 }
+
 
 
 table span.player1 {
