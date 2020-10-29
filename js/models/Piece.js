@@ -1,8 +1,10 @@
 class Piece {
-    constructor() {
+    constructor(player) {
         this._positionX;
         this._positionY;
+        this._player = player;
         this._element = document.createElement('span');
+        this._element.classList.add(`player${this._player}`);
         this._element.innerHTML = "\u265E";
 
     }
@@ -25,6 +27,10 @@ class Piece {
 
     get element () {
         return this._element;
+    }
+
+    get player () {
+        return this._player;
     }
 
     // TODO: Improve this code, verify the possibility to implement observer pattern.

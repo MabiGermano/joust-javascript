@@ -1,6 +1,9 @@
 :root {
     --color-ood:  dodgerblue;
     --color-even: #9ac0e6;
+    --color-player1: #070068;
+    --color-player2: #d6770a;
+    --color-moveTo: #6b0032;
 }
 
 html,
@@ -87,5 +90,14 @@ table tr td span {
 }
 
 table td.moveTo {
-    background-color: darksalmon !important;
+    background-color: var(--color-moveTo) !important;
+}
+
+
+table span.player1 {
+    color: var(--color-player1)
+}
+
+table span.player2 {
+    color: var(--color-player2);
 }
