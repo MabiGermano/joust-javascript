@@ -77,7 +77,8 @@ table {
 }
 
 table tr {
-    height: 5.8rem;
+    height: 4.8rem;
+    max-height: 4.8rem;
 }
 
 
@@ -139,4 +140,12 @@ table span.player1 {
 
 table span.player2 {
     color: var(--color-player2);
+}
+
+
+@media screen and (min-width: 1400px) {
+    table tr {
+        height: 5.8rem;
+        max-height: 5.8rem;
+    }
 }
