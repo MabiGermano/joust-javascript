@@ -1,15 +1,15 @@
 :root {
-    --color-ood:  #468faf;
+    --color-ood: #468faf;
     --color-even: #a9d6e5;
     --color-player1: #070068;
     --color-player2: #e69c24;
     --color-moveTo: #9b2f3d;
-    --color-ood-disabled: #7c7c7c; 
-    --color-even-disabled: #d3d3d3; 
+    --color-ood-disabled: #7c7c7c;
+    --color-even-disabled: #d3d3d3;
 }
 
 html,
-body{
+body {
     padding: 0;
     margin: 0;
     width: 100vw;
@@ -38,7 +38,7 @@ aside {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: 5px 3px 11px -5px rgba(0,0,0,0.75);
+    box-shadow: 5px 3px 11px -5px rgba(0, 0, 0, 0.75);
 }
 
 aside header h1 {
@@ -55,7 +55,8 @@ aside button {
     font-size: 1.2rem;
     transition: background-color 0.2s;
 
-    font-family: 'Nunito', sans-serif;;
+    font-family: 'Nunito', sans-serif;
+    ;
 }
 
 aside button:hover {
@@ -121,11 +122,9 @@ table tr:nth-child(even) td.disabled:nth-child(odd) {
     background-color: var(--color-even-disabled);
 }
 
-
-
 table tr td span {
-    font-size: 4rem;
-    
+    font-size: 3.5rem;
+
 }
 
 table td.moveTo {
@@ -147,5 +146,11 @@ table span.player2 {
     table tr {
         height: 5.8rem;
         max-height: 5.8rem;
+    }
+
+
+    table tr td span {
+        font-size: 4rem;
+
     }
 }
