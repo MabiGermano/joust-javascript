@@ -106,6 +106,9 @@ class Game {
     _clearOldPossibilities() {
         const nextPlayer = this._gameBoard.nextPlayer();
         let oldPossibilities = document.querySelectorAll(`.moveTo${nextPlayer.player}`);
+        if(oldPossibilities.length == 0) {
+            oldPossibilities = document.querySelectorAll(`.moveTo${this._gameBoard.turnToPlay.player}`);
+        }
         oldPossibilities.forEach(possibility => {
             possibility.classList.remove(`moveTo${nextPlayer.player}`);
             possibility.onclick = "";
