@@ -67,7 +67,7 @@ class Game {
                    
                     hasMoves = true;
                     
-                    cell.classList.add('moveTo');
+                    cell.classList.add(`moveTo${turnToPlay.player}`);
                     cell.onclick = () => {
                         const old = {};
                         old.positionX = turnToPlay.positionX;
@@ -104,9 +104,10 @@ class Game {
     }
 
     _clearOldPossibilities() {
-        let oldPossibilities = document.querySelectorAll('.moveTo');
+        const nextPlayer = this._gameBoard.nextPlayer();
+        let oldPossibilities = document.querySelectorAll(`.moveTo${nextPlayer.player}`);
         oldPossibilities.forEach(possibility => {
-            possibility.classList.remove('moveTo');
+            possibility.classList.remove(`moveTo${nextPlayer.player}`);
             possibility.onclick = "";
         });
     }
