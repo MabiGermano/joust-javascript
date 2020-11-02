@@ -232,3 +232,17 @@ table span.player2 {
     
     }
 }
+
+
+/* Altura das casas do tabuleiro para telas menores que 480px */
+@media screen and (max-width: 480px) {
+    table tr {
+        height: 3.7rem;
+        max-height: 3.7rem;
+    }
+
+    table tr td span {
+        font-size: 2.5rem;
+    
+    }
+}
